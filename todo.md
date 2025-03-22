@@ -1,27 +1,39 @@
-# ElectronicsShop Coursework To-Do List
+   # ElectronicsShop Coursework To-Do List
 Target: Early May 2025 (40 days from March 22, 2025)
 
-
-
 ## Phase 1: Planning & Analysis (Mar 22–27)
-- [ ] **Finalize Project Scope**
+- [ ] **Draft Product Requirements Document (PRD)**
   - *When*: March 22–23, 2025
-  - *How*: Review survey, guidelines. List features: Categories (Phones, Accessories, Laptops, Appliances, Apple), Filters (Quality, Price), Cart, Guest Checkout, Admin Add/Edit Products, 10% Discount Banner for Registered Users.
-  - *Tools*: Word, Excel
-  - *Git*: In `main` branch, add README.md with scope overview. Commit: “initial commit with project scope”
-
+  - *How*: Outline technical specs for Devicer MVP: purpose (online electronics store), features (browse, filter, cart, checkout, admin panel), user roles (Guest, Registered User, Admin), tech stack (React, PHP, MySQL), UI (minimalistic blue/purple). Use survey for features.
+  - *Tools*: Word
+  - *Git*: In `docs` branch, add “prd.md”. Commit: “docs: add PRD draft”
+     
     
-- [ ] **Analyze Survey Data**
+- [ ] **Draft Market Requirements Document (MRD)**
+  - *When*: March 22–23, 2025 
+  - *How*: Define market needs based on survey: target audience, key categories, customer priorities, competitors. Justify features.
+  - *Tools*: Google Docs, Excel (survey).
+  - *Git*: In `docs` branch, add “mrd.md”. Commit: “docs: add MRD draft”
+     
+    
+- [x] **Finalize Project Scope**
   - *When*: March 23–24, 2025
-  - *How*: Use Excel to calculate % for categories, priorities, and prototype feedback. Note trends: discounts, detailed info, minimalism. Summarize in a Markdown file.
+  - *How*: Review survey, guidelines, PRD, and MRD. List features: Categories (Phones, Accessories, Laptops, Appliances, Apple), Filters (Quality, Price), Cart, Guest Checkout, Admin Add/Edit Products, 10% Discount Banner for Registered Users. 
+  - *Tools*: Google Docs, Excel
+  - *Git*: In `main` branch, add README.md with scope overview. Commit: “initial commit with project scope”
+     
+    
+- [x] **Analyze Survey Data**
+  - *When*: March 24–25, 2025
+  - *How*: Use Excel to calculate % for categories, priorities, and prototype feedback. Note trends: discounts, detailed info, minimalism.
   - *Tools*: Excel
   - *Git*: In `docs` branch, add “survey_analysis.xlsx” and “survey_summary.md” with key findings. Commit: “docs: add survey analysis”
      
     
-- [ ] **Create Initial To-Do List Review**
-  - *When*: March 24–25, 2025
-  - *How*: Draft in Git
-  - *Tools*: GitHub
+- [x] **Create Initial To-Do List Review**
+  - *When*: March 25–27, 2025
+  - *How*: Draft in Google Docs, then convert to Git.
+  - *Tools*: Git, Google Docs
   - *Git*: In `docs` branch, add “todo.md” with this list. Commit: “docs: initial to-do list”
 
 
@@ -154,8 +166,11 @@ Target: Early May 2025 (40 days from March 22, 2025)
     
 - [ ] **Optional Live Demo**
   - *When*: May 5, 2025
-  - *How*: Upload PHP/React files to 000webhost.com, import SQL, test URL. Document steps.
-  - *Tools*: 000webhost
      
+
+
+
+
+   
     
   - *Git*: In `docs` branch, add “deployment_guide.md”. Commit: “docs: live demo guide”
