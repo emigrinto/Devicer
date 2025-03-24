@@ -2,15 +2,10 @@ CREATE TABLE IF NOT EXISTS `Admin` (
 	`admin_id` int AUTO_INCREMENT NOT NULL UNIQUE,
 	`admin_username` varchar(50) NOT NULL,
 	`admin_password` varchar(255) NOT NULL,
+	`first_name` varchar(50) NOT NULL,
+	`last_name` int NOT NULL,
+	`email` varchar(100) NOT NULL UNIQUE,
 	PRIMARY KEY (`admin_id`)
-);
-
-CREATE TABLE IF NOT EXISTS `Customer` (
-	`customer_id` int AUTO_INCREMENT NOT NULL UNIQUE,
-	`customer_username` varchar(50),
-	`customer_password` varchar(255),
-	`discount` boolean NOT NULL,
-	PRIMARY KEY (`customer_id`)
 );
 
 CREATE TABLE IF NOT EXISTS `Product` (
@@ -54,7 +49,20 @@ CREATE TABLE IF NOT EXISTS `Order_details` (
 	PRIMARY KEY (`order_details_id`)
 );
 
-
+CREATE TABLE IF NOT EXISTS `Customer` (
+	`customer_id` int AUTO_INCREMENT NOT NULL UNIQUE,
+	`customer_username` varchar(50),
+	`customer_password` varchar(255),
+	`discount` boolean NOT NULL,
+	`first_name` varchar(50) NOT NULL,
+	`last_name` int NOT NULL,
+	`email` varchar(100) NOT NULL UNIQUE,
+	`ADD` int NOT NULL,
+	`gender` ENUM('Чоловік', 'Жінка', 'Інше') NOT NULL,
+	`birthdate` date NOT NULL,
+	`phone_number` varchar(13) NOT NULL,
+	PRIMARY KEY (`customer_id`)
+);
 
 
 ALTER TABLE `Invoice` ADD CONSTRAINT `Invoice_fk1` FOREIGN KEY (`order_id`) REFERENCES `Order`(`order_id`);
