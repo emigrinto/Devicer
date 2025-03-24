@@ -2,14 +2,14 @@
 Target: Early May 2025 (40 days from March 22, 2025)
 
 ## Phase 1: Planning & Analysis (Mar 22–27)
-- [ ] **Draft Product Requirements Document (PRD)**
+- [x] **Draft Product Requirements Document (PRD)**
   - *When*: March 22–23, 2025
   - *How*: Outline technical specs for Devicer MVP: purpose (online electronics store), features (browse, filter, cart, checkout, admin panel), user roles (Guest, Registered User, Admin), tech stack (React, PHP, MySQL), UI (minimalistic blue/purple). Use survey for features.
   - *Tools*: Word
   - *Git*: In `docs` branch, add “prd.md”. Commit: “docs: add PRD draft”
      
     
-- [ ] **Draft Market Requirements Document (MRD)**
+- [x] **Draft Market Requirements Document (MRD)**
   - *When*: March 22–23, 2025 
   - *How*: Define market needs based on survey: target audience, key categories, customer priorities, competitors. Justify features.
   - *Tools*: Google Docs, Excel (survey).
