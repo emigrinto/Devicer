@@ -48,21 +48,21 @@ Target: Early May 2025 (40 days from March 22, 2025)
   - *Git*: In `diagrams` branch, add “use_case_diagram.png”. Commit: “diagrams: add use case diagram”
      
     
-- [ ] **Design ER Diagram**
+- [x] **Design ER Diagram**
   - *When*: March 30–April 1, 2025
   - *How*: Model entities (Products, Orders, Invoices, Clients, Admins, Categories) with relationships in MySQL Workbench. Define attributes. Add dependancies and restrictions. 
   - *Tools*: MySQL Workbench, Lucidchart, DB Designer
   - *Git*: In `diagrams` branch, add “er_diagram.png” (or .sql). Commit: “diagrams: add ER diagram”
      
     
-- [ ] **Normalize Database**
+- [x] **Normalize Database**
   - *When*: April 2–3, 2025
   - *How*: Check ER diagram for 3NF: unique IDs, no redundancy (e.g., Products linked to Categories). 
   - *Tools*: MySQL Workbench, notes
   - *Git*: In `docs` branch, add “normalization.md” with process. Commit: “docs: database normalization notes”
      
     
-- [ ] **Update Site Map**
+- [x] **Update Site Map**
   - *When*: April 4–5, 2025
   - *How*: Refine site map in LC based on survey: homepage, category pages (Phones, Laptops, etc.), product details, cart, checkout, admin panel. Keep minimalistic. Export as PNG.
   - *Tools*: Figma, Google Drawings
@@ -86,7 +86,7 @@ Target: Early May 2025 (40 days from March 22, 2025)
   - *Git*: In `dev` branch, push initial structure: /frontend, /backend, /database. Commit: “dev: init project structure”
      
     
-- [ ] **Pre-Load Database with Generic Data**
+- [x] **Pre-Load Database with Generic Data**
   - *When*: April 9–10, 2025
   - *How*: Write SQL INSERTs in MySQL Workbench. Example: `INSERT INTO Products (ID, Name, Price, CategoryID) VALUES (1, 'iPhone 13', 800, 1);`. Test in MySQL.
   - *Tools*: MySQL Workbench
