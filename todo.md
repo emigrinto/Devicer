@@ -41,7 +41,7 @@ Target: Early May 2025 (40 days from March 22, 2025)
 
 
 ## Phase 2: Design & Modeling (Mar 28–Apr 5)
-- [ ] **Develop Use Case Diagram**
+- [x] **Develop Use Case Diagram**
   - *When*: March 28–29, 2025
   - *How*: Draw in Lucidchart with actors (Guest, Registered User, Admin) and actions (Browse, Filter, Add to Cart, Checkout, Manage Products). Export as PNG.
   - *Tools*: Lucidchart, Draw.io
