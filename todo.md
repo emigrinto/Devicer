@@ -72,14 +72,14 @@ Target: Early May 2025 (40 days from March 22, 2025)
 
 
 ## Phase 3: Development Setup (Apr 6–10)
-- [ ] **Set Up Development Environment**
+- [х] **Set Up Development Environment**
   - *When*: April 6–7, 2025
   - *How*: On Ubuntu, run `sudo apt install php apache2 mysql-server`, install npm/Node.js for React. Test locally with `http://localhost`. Document steps.
   - *Tools*: Ubuntu Terminal, VS Code
   - *Git*: In `docs` branch, add “setup_guide.md” with commands. Commit: “docs: dev environment setup”
      
     
-- [ ] **Initialize Project Structure**
+- [х] **Initialize Project Structure**
   - *When*: April 8–9, 2025
   - *How*: Run `npx create-react-app frontend` for /frontend, create /backend with index.php, set up /database folder for SQL. Test basic file creation.
   - *Tools*: VS Code, Terminal
@@ -96,37 +96,31 @@ Target: Early May 2025 (40 days from March 22, 2025)
 
 
 ## Phase 4: Coding (Apr 11–25)
-- [ ] **Build Frontend (React)**
+- [x] **Build Frontend (html, JS, CSS)
   - *When*: April 11–17, 2025
   - *How*: Code React components (Home.js, ProductList.js, Cart.js, Login.js) in blue/purple/lilac minimalistic style. Fetch data via backend API calls. Test locally.
   - *Tools*: VS Code, React Dev Tools
   - *Git*: In `frontend` branch, commit daily (e.g., “frontend: add product list”). Merge to `dev` on April 17.
      
     
-- [ ] **Develop Backend (PHP)**
+- [x] **Develop Backend (PHP)**
   - *When*: April 18–22, 2025
   - *How*: Create PHP API endpoints (getProducts, addProduct, login, checkout) using PDO for MySQL. Handle guest sessions with PHP sessions. Test with Postman.
   - *Tools*: VS Code, Postman
   - *Git*: In `backend` branch, commit (e.g., “backend: add product API”). Merge to `dev` on April 22.
      
     
-- [ ] **Implement Admin Panel**
+- [x] **Implement Admin Panel**
   - *When*: April 23–25, 2025
   - *How*: Add React admin route (/admin), PHP endpoints (addProduct, updateProduct). Pre-authenticate admins via database. Test adding a product.
   - *Tools*: VS Code
   - *Git*: In `frontend` (“frontend: admin UI”) and `backend` (“backend: admin endpoints”) branches, commit. Merge to `dev` on April 25.
      
-    
-- [ ] **Add Mock Payment Demo**
-  - *When*: April 25, 2025
-  - *How*: Add a checkout button in React triggering “Payment Successful” alert (no real gateway). Test flow.
-  - *Tools*: VS Code
-  - *Git*: In `frontend` branch, commit (“frontend: mock payment”). Merge to `dev`.
 
 
 
 ## Phase 5: Testing & Documentation (Apr 26–May 1)
-- [ ] **Test Application**
+- [x] **Test Application**
   - *When*: April 26–27, 2025
   - *How*: Manually test: browse, filter, cart, checkout (guest + registered), admin actions. Document results in Markdown.
   - *Tools*: Browser
