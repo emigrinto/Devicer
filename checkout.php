@@ -1,64 +1,53 @@
 <?php
 session_start();
-include '../backend/db_connect.php';
-include '../backend/view_cart.php';
 
+// Redirect to login if not logged in
 if (!isset($_SESSION['customer_id'])) {
-    header("Location: account.php");
+    header("Location: login.php");
     exit();
 }
-$customer_id = $_SESSION['customer_id'];
 
-// Fetch customer address
-try {
-    $sql = "SELECT address FROM Customer WHERE customer_id = ?";
-    $stmt = $pdo->prepare($sql);
-    $stmt->execute([$customer_id]);
-    $customer = $stmt->fetch(PDO::FETCH_ASSOC);
-    $address = $customer['address'];
-} catch (PDOException $e) {
-    die("Error fetching address: " . $e->getMessage());
+// Redirect admins to admin dashboard
+if (isset($_SESSION['admin_id'])) {
+    header("Location: admin_dashboard.php");
+    exit();
 }
 
-// Process checkout
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['confirm_order'])) {
-    try {
-        $pdo->beginTransaction();
+// Fetch checkout data (cart items and address) by calling the backend
+$items = [];
+$total = 0;
+$address = '';
+$error = '';
+$message = '';
 
-        // Create order
-        $order_date = date('Y-m-d H:i:s');
-        $sql = "INSERT INTO `Order` (customer_id, order_date) VALUES (?, ?)";
-        $stmt = $pdo->prepare($sql);
-        $stmt->execute([$customer_id, $order_date]);
-        $order_id = $pdo->lastInsertId();
+try {
+    $post_data = http_build_query(['action' => 'get_checkout_data']);
+    $options = [
+        'http' => [
+            'header' => "Content-Type: application/x-www-form-urlencoded\r\n",
+            'method' => 'POST',
+            'content' => $post_data
+        ]
+    ];
+    $context = stream_context_create($options);
+    $result = file_get_contents('../backend/cart_actions.php', false, $context);
+    $response = json_decode($result, true);
 
-        // Add order details
-        $total = 0;
-        foreach ($cart_items as $item) {
-            $sql = "INSERT INTO Order_details (order_id, product_id, quantity) VALUES (?, ?, ?)";
-            $stmt = $pdo->prepare($sql);
-            $stmt->execute([$order_id, $item['product_id'], $item['quantity']]);
-            $total += $item['price'] * $item['quantity'];
-        }
-
-        // Create invoice
-        $invoice_date = date('Y-m-d H:i:s');
-        $sql = "INSERT INTO Invoice (order_id, total, invoice_date) VALUES (?, ?, ?)";
-        $stmt = $pdo->prepare($sql);
-        $stmt->execute([$order_id, $total, $invoice_date]);
-
-        // Clear cart
-        $sql = "DELETE FROM Cart WHERE customer_id = ?";
-        $stmt = $pdo->prepare($sql);
-        $stmt->execute([$customer_id]);
-
-        $pdo->commit();
-        header("Location: store.php?order_success=1");
-        exit();
-    } catch (PDOException $e) {
-        $pdo->rollBack();
-        die("Error processing order: " . $e->getMessage());
+    if ($response['success']) {
+        $items = $response['items'];
+        $total = $response['total'];
+        $address = $response['address'];
+    } else {
+        $error = $response['error'];
     }
+} catch (Exception $e) {
+    $error = 'Помилка: ' . $e->getMessage();
+}
+
+// Handle messages from previous actions (e.g., order confirmation)
+if (isset($_SESSION['checkout_message'])) {
+    $message = $_SESSION['checkout_message'];
+    unset($_SESSION['checkout_message']);
 }
 ?>
 
@@ -69,10 +58,50 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['confirm_order'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Оформлення замовлення - Devicer</title>
     <link rel="stylesheet" href="styles.css">
+    <style>
+        .cart-items {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        .cart-item {
+            border: 1px solid #ddd;
+            padding: 1rem;
+            width: 200px;
+            text-align: center;
+        }
+        .cart-item img {
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+        }
+        form {
+            margin-top: 2rem;
+        }
+        label {
+            display: block;
+            margin: 0.5rem 0;
+        }
+        input[type="text"] {
+            width: 100%;
+            max-width: 400px;
+            padding: 0.5rem;
+            margin-bottom: 1rem;
+        }
+        button {
+            padding: 0.5rem 1rem;
+            cursor: pointer;
+        }
+        .message {
+            margin: 1rem 0;
+        }
+    </style>
 </head>
 <body>
 <header>
-    <div class="logo">DEVICER</div>
+    <div class="logo">
+        <a href="index.php">DEVICER</a>
+    </div>
     <nav>
         <ul>
             <li><a href="index.php">Головна</a></li>
@@ -84,51 +113,58 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['confirm_order'])) {
         </ul>
     </nav>
     <div class="search-lang">
-        <input type="text" placeholder="Пошук...">
-        <select>
+        <form action="search.php" method="GET" class="search-form">
+            <input type="text" name="query" placeholder="Пошук..." class="search-input" value="<?php echo isset($_GET['query']) ? htmlspecialchars($_GET['query']) : ''; ?>">
+            <button type="submit" class="search-button">Шукати</button>
+        </form>
+        <select class="language-select">
             <option value="uk">UKR</option>
             <option value="en">ENG</option>
         </select>
     </div>
 </header>
 
-    <main>
-        <h1>Оформлення замовлення</h1>
-        <div class="cart-items">
-            <?php
-            if (!empty($cart_items)) {
-                $total = 0;
-                foreach ($cart_items as $item) {
-                    echo '<div class="cart-item">';
-                    echo '<img src="' . htmlspecialchars($item['image_url']) . '" alt="' . htmlspecialchars($item['name']) . '">';
-                    echo '<h3>' . htmlspecialchars($item['name']) . '</h3>';
-                    echo '<p>Ціна: ' . htmlspecialchars($item['price']) . ' грн</p>';
-                    echo '<p>Кількість: ' . htmlspecialchars($item['quantity']) . '</p>';
-                    echo '<p>Сума: ' . ($item['price'] * $item['quantity']) . ' грн</p>';
-                    echo '</div>';
-                    $total += $item['price'] * $item['quantity'];
-                }
-                echo '<h2>Загальна сума: ' . $total . ' грн</h2>';
-            } else {
-                echo '<p>Ваш кошик порожній.</p>';
-            }
-            ?>
-        </div>
+<main>
+    <h1>Оформлення замовлення</h1>
 
-        <?php if (!empty($cart_items)): ?>
-            <form method="POST">
-                <h2>Адреса доставки</h2>
-                <label for="address">Адреса:</label>
-                <input type="text" id="address" name="address" value="<?php echo htmlspecialchars($address); ?>" required>
-                <button type="submit" name="confirm_order">Підтвердити замовлення</button>
-            </form>
+    <?php if ($error): ?>
+        <p style="color: red;"><?php echo htmlspecialchars($error); ?></p>
+    <?php endif; ?>
+    <?php if ($message): ?>
+        <p class="message" style="color: green;"><?php echo htmlspecialchars($message); ?></p>
+    <?php endif; ?>
+
+    <div class="cart-items">
+        <?php if (!empty($items)): ?>
+            <?php foreach ($items as $item): ?>
+                <div class="cart-item">
+                    <img src="<?php echo htmlspecialchars($item['image_url'] ?: 'https://via.placeholder.com/100'); ?>" alt="<?php echo htmlspecialchars($item['name']); ?>">
+                    <h3><?php echo htmlspecialchars($item['name']); ?></h3>
+                    <p>Ціна: <?php echo htmlspecialchars($item['price']); ?> грн</p>
+                    <p>Кількість: <?php echo htmlspecialchars($item['quantity']); ?></p>
+                    <p>Сума: <?php echo htmlspecialchars($item['price'] * $item['quantity']); ?> грн</p>
+                </div>
+            <?php endforeach; ?>
+            <h2>Загальна сума: <?php echo htmlspecialchars($total); ?> грн</h2>
+        <?php else: ?>
+            <p>Ваш кошик порожній.</p>
         <?php endif; ?>
-    </main>
+    </div>
 
-    <footer>
-        <p>© 2025 Devicer. Усі права захищені.</p>
-    </footer>
+    <?php if (!empty($items)): ?>
+        <form method="POST" action="../backend/checkout_process.php">
+            <h2>Адреса доставки</h2>
+            <label for="address">Адреса:</label>
+            <input type="text" id="address" name="address" value="<?php echo htmlspecialchars($address); ?>" required>
+            <button type="submit" name="confirm_order">Підтвердити замовлення</button>
+        </form>
+    <?php endif; ?>
+</main>
 
-    <script src="scripts.js"></script>
+<footer>
+    <p>© 2025 Devicer. Усі права захищені.</p>
+</footer>
+
+<script src="scripts.js"></script>
 </body>
 </html>
