@@ -138,3 +138,14 @@ CREATE TABLE `Cart` (
     FOREIGN KEY (`product_id`) REFERENCES `Product`(`product_id`) ON DELETE CASCADE
 );
 
+
+CREATE TABLE `Support` (
+    `support_id` INT AUTO_INCREMENT NOT NULL UNIQUE,
+    `customer_id` INT NOT NULL,
+    `subject` VARCHAR(100) NOT NULL,
+    `message` TEXT NOT NULL,
+    `status` ENUM('Open', 'Resolved') NOT NULL DEFAULT 'Open',
+    `submitted_date` DATETIME NOT NULL,
+    PRIMARY KEY (`support_id`),
+    FOREIGN KEY (`customer_id`) REFERENCES `Customer`(`customer_id`) ON DELETE CASCADE
+);
