@@ -144,55 +144,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit_review'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?php echo htmlspecialchars($product['name']); ?> - Devicer</title>
     <link rel="stylesheet" href="styles.css">
-    <style>
-        .slideshow-container {
-            position: relative;
-            max-width: 300px;
-            margin: auto;
-        }
-        .slideshow-image {
-            display: none;
-            width: 100%;
-            height: 300px;
-            object-fit: cover;
-        }
-        .slideshow-image.active {
-            display: block;
-        }
-        .prev, .next {
-            cursor: pointer;
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            padding: 10px;
-            color: white;
-            background-color: rgba(0, 0, 0, 0.5);
-            user-select: none;
-        }
-        .prev {
-            left: 0;
-        }
-        .next {
-            right: 0;
-        }
-        .discount-badge {
-            position: absolute;
-            top: 10px;
-            left: 10px;
-            background-color: #e74c3c;
-            color: white;
-            padding: 0.2rem 0.5rem;
-            border-radius: 5px;
-            font-size: 0.8rem;
-            font-weight: bold;
-        }
-        .product-images {
-            position: relative;
-        }
-    </style>
 </head>
 <body>
-    <header>
+<header>
         <div class="logo">
             <a href="index.php">DEVICER</a>
         </div>
@@ -200,17 +154,27 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit_review'])) {
             <ul>
                 <li><a href="index.php">Головна</a></li>
                 <li><a href="store.php">Магазин</a></li>
-                <li><a href="cart.php">Кошик</a></li>
-                <li><a href="wishlist.php">Список бажань</a></li>
+                <li class="dropdown">
+                    <a href="cart.php" class="dropbtn">Кошик</a>
+                    <div class="dropdown-content">
+                        <a href="wishlist.php">Список бажань</a>
+                    </div>
+                </li>
                 <li><a href="account.php">Акаунт</a></li>
                 <li><a href="support.php">Підтримка</a></li>
+                <li class="dropdown">
+                    <a href="about.php" class="dropbtn">Про нас</a>
+                    <div class="dropdown-content">
+                        <a href="contact.php">Контакти</a>
+                    </div>
+                </li>
             </ul>
         </nav>
         <div class="search-lang">
-            <form action="search.php" method="GET" class="search-form">
+        <form action="search.php" method="GET" class="search-form">
+                 <span class="search-icon">🔍︎</span>
                 <input type="text" name="query" placeholder="Пошук..." class="search-input" value="<?php echo isset($_GET['query']) ? htmlspecialchars($_GET['query']) : ''; ?>">
-                <button type="submit" class="search-button">Шукати</button>
-            </form>
+        </form>
             <select class="language-select">
                 <option value="uk">UKR</option>
                 <option value="en">ENG</option>
