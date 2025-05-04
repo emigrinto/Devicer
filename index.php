@@ -88,41 +88,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['add_to_wishlist'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Devicer - Головна</title>
     <link rel="stylesheet" href="styles.css">
-    <style>
-        .categories, .featured-products {
-            text-align: center; /* Center the headings */
-        }
-        .category-list {
-            display: flex;
-            justify-content: center; /* Center categories */
-            gap: 1rem;
-        }
-        .featured-products .products {
-            display: flex;
-            justify-content: center; /* Center products */
-            gap: 1rem;
-            flex-wrap: wrap;
-        }
-        .product img {
-            width: 150px;
-            height: 150px;
-            object-fit: cover;
-        }
-        .discount-badge {
-            position: absolute;
-            top: 10px;
-            left: 10px;
-            background-color: #e74c3c;
-            color: white;
-            padding: 0.2rem 0.5rem;
-            border-radius: 5px;
-            font-size: 0.8rem;
-            font-weight: bold;
-        }
-        .product {
-            position: relative;
-        }
-    </style>
 </head>
 <body>
     <header>
@@ -133,17 +98,27 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['add_to_wishlist'])) {
             <ul>
                 <li><a href="index.php">Головна</a></li>
                 <li><a href="store.php">Магазин</a></li>
-                <li><a href="cart.php">Кошик</a></li>
-                <li><a href="wishlist.php">Список бажань</a></li>
+                <li class="dropdown">
+                    <a href="cart.php" class="dropbtn">Кошик</a>
+                    <div class="dropdown-content">
+                        <a href="wishlist.php">Список бажань</a>
+                    </div>
+                </li>
                 <li><a href="account.php">Акаунт</a></li>
                 <li><a href="support.php">Підтримка</a></li>
+                <li class="dropdown">
+                    <a href="about.php" class="dropbtn">Про нас</a>
+                    <div class="dropdown-content">
+                        <a href="contact.php">Контакти</a>
+                    </div>
+                </li>
             </ul>
         </nav>
         <div class="search-lang">
-            <form action="search.php" method="GET" class="search-form">
+        <form action="search.php" method="GET" class="search-form">
+                 <span class="search-icon">🔍︎</span>
                 <input type="text" name="query" placeholder="Пошук..." class="search-input" value="<?php echo isset($_GET['query']) ? htmlspecialchars($_GET['query']) : ''; ?>">
-                <button type="submit" class="search-button">Шукати</button>
-            </form>
+        </form>
             <select class="language-select">
                 <option value="uk">UKR</option>
                 <option value="en">ENG</option>
@@ -152,10 +127,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['add_to_wishlist'])) {
     </header>
 
     <main>
-        <div class="banner">
-            <h1>Знижка 30% на всі смартфони!</h1>
-            <p>Скористайтеся пропозицією прямо зараз!</p>
-            <button onclick="window.location.href='store.php?category=смартфони'">Купити смартфони</button>
+    <div class="banner">
+            <h2>Ласкаво просимо до Devicer!</h2>
+            <p>Ознайомтесь з нашими новітніми технологіями та пропозиціями.</p>
+            <a href="../frontend/store.php"><button>Переглянути магазин</button></a>
         </div>
 
         <div class="categories">
