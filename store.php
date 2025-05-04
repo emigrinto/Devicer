@@ -179,96 +179,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['add_to_wishlist'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Магазин - Devicer</title>
     <link rel="stylesheet" href="styles.css">
-    <style>
-        .filter-sort-container {
-            display: flex;
-            gap: 20px;
-            margin-bottom: 20px;
-        }
-        .filter-button {
-            background-color: #3498db;
-            color: white;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 16px;
-        }
-        .filter-button:hover {
-            background-color: #2980b9;
-        }
-        .filter-panel {
-            display: none;
-            background-color: #f9f9f9;
-            padding: 20px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            margin-bottom: 20px;
-        }
-        .filter-panel.active {
-            display: block;
-        }
-        .filter-panel label {
-            display: block;
-            margin: 10px 0 5px;
-            font-weight: bold;
-        }
-        .filter-panel select, .filter-panel input {
-            width: 100%;
-            padding: 8px;
-            margin-bottom: 10px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            font-size: 14px;
-        }
-        .filter-panel button {
-            background-color: #2ecc71;
-            color: white;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-        .filter-panel button:hover {
-            background-color: #27ae60;
-        }
-        .sort-form select {
-            padding: 8px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            font-size: 14px;
-        }
-        .product img {
-            width: 150px;
-            height: 150px;
-            object-fit: cover;
-        }
-        .product button[name="add_to_cart"] {
-            padding: 0.5rem 1.5rem; /* Default size */
-            font-size: 0.9rem;
-        }
-        .product button[name="add_to_wishlist"] {
-            padding: 0.4rem 1rem; /* Smaller size */
-            font-size: 0.8rem;
-        }
-        .discount-badge {
-            position: absolute;
-            top: 10px;
-            left: 10px;
-            background-color: #e74c3c;
-            color: white;
-            padding: 0.2rem 0.5rem;
-            border-radius: 5px;
-            font-size: 0.8rem;
-            font-weight: bold;
-        }
-        .product {
-            position: relative;
-        }
-    </style>
 </head>
 <body>
-    <header>
+<header>
         <div class="logo">
             <a href="index.php">DEVICER</a>
         </div>
@@ -276,17 +189,27 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['add_to_wishlist'])) {
             <ul>
                 <li><a href="index.php">Головна</a></li>
                 <li><a href="store.php">Магазин</a></li>
-                <li><a href="cart.php">Кошик</a></li>
-                <li><a href="wishlist.php">Список бажань</a></li>
+                <li class="dropdown">
+                    <a href="cart.php" class="dropbtn">Кошик</a>
+                    <div class="dropdown-content">
+                        <a href="wishlist.php">Список бажань</a>
+                    </div>
+                </li>
                 <li><a href="account.php">Акаунт</a></li>
                 <li><a href="support.php">Підтримка</a></li>
+                <li class="dropdown">
+                    <a href="about.php" class="dropbtn">Про нас</a>
+                    <div class="dropdown-content">
+                        <a href="contact.php">Контакти</a>
+                    </div>
+                </li>
             </ul>
         </nav>
         <div class="search-lang">
-            <form action="search.php" method="GET" class="search-form">
+        <form action="search.php" method="GET" class="search-form">
+                 <span class="search-icon">🔍︎</span>
                 <input type="text" name="query" placeholder="Пошук..." class="search-input" value="<?php echo isset($_GET['query']) ? htmlspecialchars($_GET['query']) : ''; ?>">
-                <button type="submit" class="search-button">Шукати</button>
-            </form>
+        </form>
             <select class="language-select">
                 <option value="uk">UKR</option>
                 <option value="en">ENG</option>
