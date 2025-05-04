@@ -4,6 +4,7 @@ if (!isset($_SESSION['customer_id'])) {
     header("Location: account.php");
     exit();
 }
+
 include '../backend/view_cart.php';
 ?>
 
@@ -17,30 +18,40 @@ include '../backend/view_cart.php';
 </head>
 <body>
 <header>
-    <div class="logo">
-        <a href="index.php">DEVICER</a>
-    </div>
-    <nav>
-        <ul>
-            <li><a href="index.php">Головна</a></li>
-            <li><a href="store.php">Магазин</a></li>
-            <li><a href="cart.php">Кошик</a></li>
-            <li><a href="wishlist.php">Список бажань</a></li>
-            <li><a href="account.php">Акаунт</a></li>
-            <li><a href="support.php">Підтримка</a></li>
-        </ul>
-    </nav>
-    <div class="search-lang">
+        <div class="logo">
+            <a href="index.php">DEVICER</a>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.php">Головна</a></li>
+                <li><a href="store.php">Магазин</a></li>
+                <li class="dropdown">
+                    <a href="cart.php" class="dropbtn">Кошик</a>
+                    <div class="dropdown-content">
+                        <a href="wishlist.php">Список бажань</a>
+                    </div>
+                </li>
+                <li><a href="account.php">Акаунт</a></li>
+                <li><a href="support.php">Підтримка</a></li>
+                <li class="dropdown">
+                    <a href="about.php" class="dropbtn">Про нас</a>
+                    <div class="dropdown-content">
+                        <a href="contact.php">Контакти</a>
+                    </div>
+                </li>
+            </ul>
+        </nav>
+        <div class="search-lang">
         <form action="search.php" method="GET" class="search-form">
-            <input type="text" name="query" placeholder="Пошук..." class="search-input" value="<?php echo isset($_GET['query']) ? htmlspecialchars($_GET['query']) : ''; ?>">
-            <button type="submit" class="search-button">Шукати</button>
+                 <span class="search-icon">🔍︎</span>
+                <input type="text" name="query" placeholder="Пошук..." class="search-input" value="<?php echo isset($_GET['query']) ? htmlspecialchars($_GET['query']) : ''; ?>">
         </form>
-        <select class="language-select">
-            <option value="uk">UKR</option>
-            <option value="en">ENG</option>
-        </select>
-    </div>
-</header>
+            <select class="language-select">
+                <option value="uk">UKR</option>
+                <option value="en">ENG</option>
+            </select>
+        </div>
+    </header>
 
     <main>
         <h1>Кошик</h1>
