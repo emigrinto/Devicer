@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36 OPR/118.0.0.0" version="26.2.14" pages="2">
+  <diagram name="use case upd" id="5SVSdkxGL1FW46XigwJ0">
+    <mxGraphModel dx="1001" dy="606" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" background="light-dark(#FFFFFF,#F0F0F0)" backgroundImage="{&quot;src&quot;:&quot;data:page/id,9FEMsWOmyP9nyg9JZEfp&quot;}" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="7nRDalU8oULHdNdsbKnQ-1" value="Незареєстрований&#xa; користувач" style="shape=actor;fillColor=light-dark(#0050ef, #9fbcea);strokeColor=#001DBC;fontFamily=Roboto;fontSize=12;fontColor=light-dark(#FFFFFF,#004C99);labelBorderColor=default;fontStyle=1;labelBackgroundColor=light-dark(#000000,#A18EB3);" parent="1" vertex="1">
+          <mxGeometry x="111" y="161" width="38" height="65" as="geometry" />
+        </mxCell>
+        <mxCell id="7nRDalU8oULHdNdsbKnQ-3" value="Адміністратор" style="shape=actor;fillColor=light-dark(#a20025, #e55d5d);strokeColor=#6F0000;fontFamily=Roboto;fontSize=12;fontColor=light-dark(#FFFFFF,#7E1212);fontStyle=1;labelBackgroundColor=light-dark(#000000,#A18EB3);" parent="1" vertex="1">
+          <mxGeometry x="431" y="645" width="36" height="67" as="geometry" />
+        </mxCell>
+        <mxCell id="7nRDalU8oULHdNdsbKnQ-5" value="Devicer" style="shape=swimlane;fillColor=light-dark(#6A00FF,#614061);strokeColor=#3700CC;fontFamily=Amatic SC;fontSize=20;fontColor=#ffffff;" parent="1" vertex="1">
+          <mxGeometry x="186" y="40" width="500" height="600" as="geometry">
+            <mxRectangle x="200" y="50" width="100" height="40" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="7nRDalU8oULHdNdsbKnQ-6" value="Переглянути товари" style="ellipse;fillColor=light-dark(#76608a, #9fbcea);strokeColor=#432D57;fontFamily=Roboto;fontSize=12;fontColor=#ffffff;gradientColor=light-dark(#000000,#CCFFCC);gradientDirection=east;" parent="7nRDalU8oULHdNdsbKnQ-5" vertex="1">
+          <mxGeometry x="25" y="52" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="7nRDalU8oULHdNdsbKnQ-8" value="Увійти" style="ellipse;fillColor=light-dark(#76608a, #9fbcea);strokeColor=#432D57;fontFamily=Roboto;fontSize=12;fontColor=#ffffff;gradientColor=light-dark(#000000,#CCFFCC);gradientDirection=east;" parent="7nRDalU8oULHdNdsbKnQ-5" vertex="1">
+          <mxGeometry x="39" y="210" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="7nRDalU8oULHdNdsbKnQ-9" value="Зареєструватися" style="ellipse;fillColor=light-dark(#76608a, #9fbcea);strokeColor=#432D57;fontFamily=Roboto;fontSize=12;fontColor=#ffffff;" parent="7nRDalU8oULHdNdsbKnQ-5" vertex="1">
+          <mxGeometry x="19" y="287" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="7nRDalU8oULHdNdsbKnQ-10" value="Керувати кошиком" style="ellipse;fillColor=light-dark(#76608A,#CCFFCC);strokeColor=#432D57;fontFamily=Roboto;fontSize=12;fontColor=#ffffff;" parent="7nRDalU8oULHdNdsbKnQ-5" vertex="1">
+          <mxGeometry x="240" y="54" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="7nRDalU8oULHdNdsbKnQ-12" value="Зробити замовлення" style="ellipse;fillColor=light-dark(#76608A,#CCFFCC);strokeColor=#432D57;fontFamily=Roboto;fontSize=12;fontColor=#ffffff;" parent="7nRDalU8oULHdNdsbKnQ-5" vertex="1">
+          <mxGeometry x="217" y="319" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="7nRDalU8oULHdNdsbKnQ-13" value="Переглянути історію&#xa; замовлень/  відгуків" style="ellipse;fillColor=light-dark(#76608A,#CCFFCC);strokeColor=#432D57;fontFamily=Roboto;fontSize=12;fontColor=#ffffff;" parent="7nRDalU8oULHdNdsbKnQ-5" vertex="1">
+          <mxGeometry x="371" y="296" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="7nRDalU8oULHdNdsbKnQ-14" value="Залишити відгук" style="ellipse;fillColor=light-dark(#76608A,#CCFFCC);strokeColor=#432D57;fontFamily=Roboto;fontSize=12;fontColor=#ffffff;" parent="7nRDalU8oULHdNdsbKnQ-5" vertex="1">
+          <mxGeometry x="375" y="54" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="7nRDalU8oULHdNdsbKnQ-15" value="Звернутися до &#xa;підтримки" style="ellipse;fillColor=light-dark(#76608A,#CCFFCC);strokeColor=#432D57;fontFamily=Roboto;fontSize=12;fontColor=#ffffff;" parent="7nRDalU8oULHdNdsbKnQ-5" vertex="1">
+          <mxGeometry x="273" y="119" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="7nRDalU8oULHdNdsbKnQ-16" value="Керувати профілем" style="ellipse;fillColor=light-dark(#76608A,#CCFFCC);strokeColor=#432D57;fontFamily=Roboto;fontSize=12;fontColor=#ffffff;" parent="7nRDalU8oULHdNdsbKnQ-5" vertex="1">
+          <mxGeometry x="198" y="249" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="7nRDalU8oULHdNdsbKnQ-17" value="Увійти/&#xa;Вийти" style="ellipse;fillColor=light-dark(#76608A,#FFCCCC);strokeColor=#432D57;fontFamily=Roboto;fontSize=12;fontColor=#ffffff;" parent="7nRDalU8oULHdNdsbKnQ-5" vertex="1">
+          <mxGeometry x="19" y="527" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="7nRDalU8oULHdNdsbKnQ-18" value="Керувати &#xa;товарами" style="ellipse;fillColor=light-dark(#76608A,#FFCCCC);strokeColor=#432D57;fontFamily=Roboto;fontSize=12;fontColor=#ffffff;" parent="7nRDalU8oULHdNdsbKnQ-5" vertex="1">
+          <mxGeometry x="56" y="440" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="7nRDalU8oULHdNdsbKnQ-19" value="Переглянути &#xa;замовлення" style="ellipse;fillColor=light-dark(#76608A,#FFCCCC);strokeColor=#432D57;fontFamily=Roboto;fontSize=12;fontColor=#ffffff;" parent="7nRDalU8oULHdNdsbKnQ-5" vertex="1">
+          <mxGeometry x="200" y="450" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="7nRDalU8oULHdNdsbKnQ-20" value="Переглянути запити&#xa; підтримки" style="ellipse;fillColor=light-dark(#76608A,#FFCCCC);strokeColor=#432D57;fontFamily=Roboto;fontSize=12;fontColor=#ffffff;" parent="7nRDalU8oULHdNdsbKnQ-5" vertex="1">
+          <mxGeometry x="356" y="427" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="7nRDalU8oULHdNdsbKnQ-21" value="Згенерувати &#xa;звіти" style="ellipse;fillColor=light-dark(#76608A,#FFCCCC);strokeColor=#432D57;fontFamily=Roboto;fontSize=12;fontColor=#ffffff;" parent="7nRDalU8oULHdNdsbKnQ-5" vertex="1">
+          <mxGeometry x="367" y="517" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="7nRDalU8oULHdNdsbKnQ-22" style="edgeStyle=none;endArrow=none;fillColor=#dae8fc;strokeColor=#6c8ebf;gradientColor=#7ea6e0;" parent="1" source="7nRDalU8oULHdNdsbKnQ-1" target="7nRDalU8oULHdNdsbKnQ-6" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="7nRDalU8oULHdNdsbKnQ-23" style="edgeStyle=none;endArrow=none;fillColor=#dae8fc;strokeColor=#6c8ebf;gradientColor=#7ea6e0;" parent="1" source="7nRDalU8oULHdNdsbKnQ-1" target="7nRDalU8oULHdNdsbKnQ-7" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="7nRDalU8oULHdNdsbKnQ-24" style="edgeStyle=none;endArrow=none;fillColor=#dae8fc;strokeColor=#6c8ebf;gradientColor=#7ea6e0;" parent="1" source="7nRDalU8oULHdNdsbKnQ-1" target="7nRDalU8oULHdNdsbKnQ-8" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="7nRDalU8oULHdNdsbKnQ-25" style="edgeStyle=none;endArrow=none;fillColor=#dae8fc;strokeColor=#6c8ebf;gradientColor=#7ea6e0;" parent="1" source="7nRDalU8oULHdNdsbKnQ-1" target="7nRDalU8oULHdNdsbKnQ-9" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="7nRDalU8oULHdNdsbKnQ-33" style="edgeStyle=none;endArrow=none;fillColor=#fad9d5;strokeColor=#ae4132;" parent="1" source="7nRDalU8oULHdNdsbKnQ-3" target="7nRDalU8oULHdNdsbKnQ-17" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="7nRDalU8oULHdNdsbKnQ-34" style="edgeStyle=none;endArrow=none;fillColor=#fad9d5;strokeColor=#ae4132;" parent="1" source="7nRDalU8oULHdNdsbKnQ-3" target="7nRDalU8oULHdNdsbKnQ-18" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="7nRDalU8oULHdNdsbKnQ-35" style="edgeStyle=none;endArrow=none;fillColor=#fad9d5;strokeColor=#ae4132;" parent="1" source="7nRDalU8oULHdNdsbKnQ-3" target="7nRDalU8oULHdNdsbKnQ-19" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="7nRDalU8oULHdNdsbKnQ-36" style="edgeStyle=none;endArrow=none;fillColor=#fad9d5;strokeColor=#ae4132;" parent="1" source="7nRDalU8oULHdNdsbKnQ-3" target="7nRDalU8oULHdNdsbKnQ-20" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="7nRDalU8oULHdNdsbKnQ-37" style="edgeStyle=none;endArrow=none;fillColor=#fad9d5;strokeColor=#ae4132;" parent="1" source="7nRDalU8oULHdNdsbKnQ-3" target="7nRDalU8oULHdNdsbKnQ-21" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="7nRDalU8oULHdNdsbKnQ-26" style="edgeStyle=none;endArrow=none;fillColor=#60a917;strokeColor=#2D7600;" parent="1" source="7nRDalU8oULHdNdsbKnQ-2" target="7nRDalU8oULHdNdsbKnQ-10" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="7nRDalU8oULHdNdsbKnQ-27" style="edgeStyle=none;endArrow=none;fillColor=#60a917;strokeColor=#2D7600;" parent="1" source="7nRDalU8oULHdNdsbKnQ-2" target="7nRDalU8oULHdNdsbKnQ-11" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="7nRDalU8oULHdNdsbKnQ-28" style="edgeStyle=none;endArrow=none;fillColor=#60a917;strokeColor=#2D7600;" parent="1" source="7nRDalU8oULHdNdsbKnQ-2" target="7nRDalU8oULHdNdsbKnQ-12" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="7nRDalU8oULHdNdsbKnQ-29" style="edgeStyle=none;endArrow=none;fillColor=#60a917;strokeColor=#2D7600;" parent="1" source="7nRDalU8oULHdNdsbKnQ-2" target="7nRDalU8oULHdNdsbKnQ-13" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="7nRDalU8oULHdNdsbKnQ-30" style="edgeStyle=none;endArrow=none;fillColor=#60a917;strokeColor=#2D7600;" parent="1" source="7nRDalU8oULHdNdsbKnQ-2" target="7nRDalU8oULHdNdsbKnQ-14" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="7nRDalU8oULHdNdsbKnQ-31" style="edgeStyle=none;endArrow=none;fillColor=#60a917;strokeColor=#2D7600;" parent="1" source="7nRDalU8oULHdNdsbKnQ-2" target="7nRDalU8oULHdNdsbKnQ-15" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="7nRDalU8oULHdNdsbKnQ-32" style="edgeStyle=none;endArrow=none;strokeColor=#2D7600;fillColor=#60a917;" parent="1" source="7nRDalU8oULHdNdsbKnQ-2" target="7nRDalU8oULHdNdsbKnQ-16" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="7nRDalU8oULHdNdsbKnQ-40" value="" style="edgeStyle=none;endArrow=open;dashed=1;fontFamily=Roboto;fontSize=12;fontColor=#228B22;fillColor=#60a917;strokeColor=#2D7600;" parent="1" source="7nRDalU8oULHdNdsbKnQ-2" target="7nRDalU8oULHdNdsbKnQ-7" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="367" y="160" as="sourcePoint" />
+            <mxPoint x="16" y="181" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="510" y="231" />
+              <mxPoint x="380" y="187" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="7nRDalU8oULHdNdsbKnQ-7" value="Шукати товари" style="ellipse;fillColor=light-dark(#76608a, #9fbcea);strokeColor=#432D57;fontFamily=Roboto;fontSize=12;fontColor=#ffffff;gradientColor=light-dark(#000000,#CCFFCC);gradientDirection=east;" parent="1" vertex="1">
+          <mxGeometry x="219" y="166" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="7nRDalU8oULHdNdsbKnQ-11" value="Керувати списком&#xa; бажань" style="ellipse;fillColor=light-dark(#76608A,#CCFFCC);strokeColor=#432D57;fontFamily=Roboto;fontSize=12;fontColor=#ffffff;" parent="1" vertex="1">
+          <mxGeometry x="391" y="221" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="7nRDalU8oULHdNdsbKnQ-2" value="Зареєстрований &#xa;користувач" style="shape=actor;fillColor=#60a917;strokeColor=#2D7600;fontFamily=Roboto;fontSize=12;fontColor=light-dark(#FFFFFF,#009900);fontStyle=1;labelBackgroundColor=light-dark(#FFFFFF, #a18eb3);" parent="1" vertex="1">
+          <mxGeometry x="695" y="191" width="38" height="66" as="geometry" />
+        </mxCell>
+        <mxCell id="7nRDalU8oULHdNdsbKnQ-44" value="" style="edgeStyle=none;endArrow=open;dashed=1;fontFamily=Roboto;fontSize=12;fontColor=#228B22;fillColor=#60a917;strokeColor=#2D7600;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" parent="1" target="7nRDalU8oULHdNdsbKnQ-8" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="393" y="193" as="sourcePoint" />
+            <mxPoint x="348" y="201" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="387" y="205" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="7nRDalU8oULHdNdsbKnQ-45" value="" style="edgeStyle=none;endArrow=open;dashed=1;fontFamily=Roboto;fontSize=12;fontColor=#228B22;fillColor=#60a917;strokeColor=#2D7600;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" parent="1" target="7nRDalU8oULHdNdsbKnQ-6" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="397" y="193" as="sourcePoint" />
+            <mxPoint x="355" y="290" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="387" y="170" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="9FEMsWOmyP9nyg9JZEfp" name="df diagram">
+    <mxGraphModel dx="1001" dy="572" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
