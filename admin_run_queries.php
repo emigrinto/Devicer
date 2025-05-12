@@ -1,6 +1,14 @@
 <?php
+// Start output buffering to prevent premature output
+ob_start();
+
 include '../backend/admin_auth.php';
 include '../backend/db_connect.php';
+
+// Load PhpSpreadsheet
+require 'vendor/autoload.php';
+use PhpOffice\PhpSpreadsheet\Spreadsheet;
+use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 
 $query = isset($_GET['query']) ? (int)$_GET['query'] : 0;
 $results = [];
@@ -266,6 +274,46 @@ try {
             $title = 'Помилка';
             throw new Exception('Невідомий запит');
     }
+
+    // Handle XLSX export AFTER query execution (so $results and $columns are populated)
+    if (isset($_POST['export_xlsx']) && !empty($results)) {
+        // Clear any output buffers to prevent corruption
+        ob_end_clean();
+
+        $spreadsheet = new Spreadsheet();
+        $sheet = $spreadsheet->getActiveSheet();
+
+        // Set column headers
+        $colIndex = 'A';
+        foreach ($columns as $key => $label) {
+            $sheet->setCellValue($colIndex . '1', $label);
+            $sheet->getColumnDimension($colIndex)->setAutoSize(true);
+            $colIndex++;
+        }
+
+        // Fill data
+        $row = 2;
+        foreach ($results as $data) {
+            $colIndex = 'A';
+            foreach ($columns as $key => $label) {
+                $sheet->setCellValue($colIndex . $row, $data[$key] ?? '');
+                $colIndex++;
+            }
+            $row++;
+        }
+
+        // Set headers for download
+        header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+        header('Content-Disposition: attachment;filename="' . htmlspecialchars($title) . '.xlsx"');
+        header('Cache-Control: max-age=0');
+        header('Pragma: public');
+
+        // Save and output the file
+        $writer = new Xlsx($spreadsheet);
+        $writer->save('php://output');
+        exit;
+    }
+
 } catch (Exception $e) {
     $error = 'Помилка: ' . $e->getMessage();
 }
@@ -278,9 +326,44 @@ try {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?php echo htmlspecialchars($title); ?> - Devicer</title>
     <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Print-specific styles */
+        @media print {
+            body * {
+                visibility: hidden;
+            }
+            #printableTable, #printableTable * {
+                visibility: visible;
+            }
+            #printableTable {
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 100%;
+                table-layout: fixed;
+            }
+            #printableTable th,
+            #printableTable td {
+                word-wrap: break-word;
+                overflow-wrap: break-word;
+                max-width: 150px; /* Adjust as needed */
+            }
+            .no-print {
+                display: none;
+            }
+        }
+
+        /* Ensure table fits within printable area */
+        #printableTable table {
+            width: 100%;
+            max-width: 100%;
+            table-layout: auto;
+            border-collapse: collapse;
+        }
+    </style>
 </head>
 <body>
-    <header>
+    <header class="no-print">
         <div class="logo">DEVICER - Адмін</div>
         <nav>
             <ul>
@@ -302,30 +385,49 @@ try {
         <?php elseif (empty($results)): ?>
             <p>Немає даних для відображення.</p>
         <?php else: ?>
-            <table>
-                <thead>
-                    <tr>
-                        <?php foreach ($columns as $key => $label): ?>
-                            <th><?php echo htmlspecialchars($label); ?></th>
-                        <?php endforeach; ?>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php foreach ($results as $row): ?>
+            <div class="no-print">
+                <button class="action-btn print-btn" onclick="printTable()">Друкувати</button>
+                <form method="POST" style="display: inline;">
+                    <input type="hidden" name="export_xlsx" value="1">
+                    <button type="submit" class="action-btn export-btn">Експортувати в XLSX</button>
+                </form>
+            </div>
+            <div id="printableTable">
+                <table>
+                    <thead>
                         <tr>
                             <?php foreach ($columns as $key => $label): ?>
-                                <td><?php echo htmlspecialchars($row[$key] ?? ''); ?></td>
+                                <th><?php echo htmlspecialchars($label); ?></th>
                             <?php endforeach; ?>
                         </tr>
-                    <?php endforeach; ?>
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody>
+                        <?php foreach ($results as $row): ?>
+                            <tr>
+                                <?php foreach ($columns as $key => $label): ?>
+                                    <td><?php echo htmlspecialchars($row[$key] ?? ''); ?></td>
+                                <?php endforeach; ?>
+                            </tr>
+                        <?php endforeach; ?>
+                    </tbody>
+                </table>
+            </div>
         <?php endif; ?>
-        <p><a href="admin_dashboard.php">Повернутися до панелі</a></p>
+        <p class="no-print"><a href="admin_dashboard.php">Повернутися до панелі</a></p>
     </main>
 
-    <footer>
+    <footer class="no-print">
         <p>© 2025 Devicer. Усі права захищені.</p>
     </footer>
+
+    <script>
+        function printTable() {
+            window.print();
+        }
+    </script>
 </body>
 </html>
+<?php
+// End output buffering and flush
+ob_end_flush();
+?>
